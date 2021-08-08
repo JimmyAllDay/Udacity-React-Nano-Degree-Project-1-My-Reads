@@ -1,15 +1,17 @@
 import React from 'react'
-import Book from './Book'
 
 const BookShelf = (props) => {
+    const shelf = props.Title.toLowerCase().split(" ").join("")
+    const filteredBooks = props.Books.filter(book => {
+        return book.props.shelf.toLowerCase() == shelf
+    })
+
     return(
         <div className="bookshelf">
-            <h2 className="bookshelf-title">{props.title}</h2>
+            <h2 className="bookshelf-title">{props.Title}</h2>
             <div className="bookshelf-books">
                 <ol className="books-grid">
-                    <Book/>
-                    <Book/>
-                    <Book/>
+                    {filteredBooks}
                 </ol>
             </div>
         </div>

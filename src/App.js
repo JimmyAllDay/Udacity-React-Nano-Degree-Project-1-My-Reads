@@ -18,6 +18,12 @@ class BooksApp extends React.Component {
        */
       showSearchPage: false
     }
+    this.clickHandler = this.clickHandler.bind(this)
+  }
+  clickHandler(){
+    this.setState((prevState) => ({
+      showSearchPage: !prevState.showSearchPage
+    }))
   }
 
   render() {
@@ -26,12 +32,12 @@ class BooksApp extends React.Component {
       <div className="app">
 
         {this.state.showSearchPage ? (
-          <SearchPage />
+          <SearchPage clickHandler={this.clickHandler}/>
         ) : (
           <div className="list-books">
             <Header/>
             <BookShelfContainer/>
-            <SearchButton />
+            <SearchButton clickHandler={this.clickHandler} />
           </div>
         )}
       </div>
