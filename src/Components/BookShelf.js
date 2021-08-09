@@ -3,8 +3,9 @@ import React from 'react'
 const BookShelf = (props) => {
     const shelf = props.Title.toLowerCase().split(" ").join("")
     const filteredBooks = props.Books.filter(book => {
-        return book.props.shelf.toLowerCase() == shelf
+        return book.props.shelf.toLowerCase() === shelf
     })
+    // console.log(props)
 
     return(
         <div className="bookshelf">

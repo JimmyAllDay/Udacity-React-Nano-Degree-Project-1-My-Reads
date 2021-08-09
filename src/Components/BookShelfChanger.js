@@ -1,10 +1,9 @@
 import React from 'react'
 
-const BookShelfChanger = () => {
-
+const BookShelfChanger = (props) => {
     return (
         <div className="book-shelf-changer">
-            <select>
+            <select onChange={(event) => props.bookShelfHandler(event.target.value, props.id)}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
@@ -13,7 +12,6 @@ const BookShelfChanger = () => {
             </select>
         </div>
     )
-
 }
 
 export default BookShelfChanger

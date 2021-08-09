@@ -1,21 +1,27 @@
 import React, {Component} from 'react'
 import BookShelf from './BookShelf'
 import Book from './Book'
+import SearchPage from './SearchPage'
+import SearchButton from './SearchButton'
 
 
 class BookShelfContainer extends Component  {
     constructor(){
         super()
         this.state = {
-            books: []
+            books: [],
+            //  TODO: add React Router
+            showSearchPage: false
         }
+        this.initURL = 'https://reactnd-books-api.udacity.com/books'
         this.authHeader = 'JimmyAllDayWantsBooksData'
         this.options = {
             "headers": {
                 Authorization: this.authHeader
             }
         }
-        this.initURL = 'https://reactnd-books-api.udacity.com/books'
+        this.bookShelfHandler = this.bookShelfHandler.bind(this)
+        this.routeHandler = this.routeHandler.bind(this)
     }
 
     componentDidMount() {
@@ -28,20 +34,45 @@ class BookShelfContainer extends Component  {
         })
       }
 
+    routeHandler(){
+        this.setState((prevState) => ({
+          showSearchPage: !prevState.showSearchPage
+        }))
+      }
+
+    // For reference - the below solution was derived from https://knowledge.udacity.com/questions/216569
+    bookShelfHandler(event, id){
+               this.setState(prevState => ({
+                   books: prevState.books.map(book => {
+                       if (book.id === id){
+                            const newBook = { ...book, shelf: event};
+                            return newBook;
+                       }
+                       return book
+                   })
+            }))
+    }
+
     render(){
         const BooksMap = this.state.books.map(book => {
             // console.log(book.shelf)
             return (<Book 
-                key={book.id} 
+                key={book.id}
+                id={book.id} 
                 image={book.imageLinks.smallThumbnail}
                 title={book.title}
                 // TODO:handle multiple authors
                 author={book.authors}
                 shelf={book.shelf}
+                bookShelfHandler={this.bookShelfHandler}
                 />)
         })
+
         return(
             <div className="bookshelf">
+            {this.state.showSearchPage ? (
+                <SearchPage routeHandler={this.routeHandler}/>
+              ) : (
                 <div className="list-books-content">
                     <div>
                         <BookShelf 
@@ -54,8 +85,12 @@ class BookShelfContainer extends Component  {
                             Books={BooksMap} 
                             Title={'Read'}/>
                     </div>
+                <SearchButton routeHandler={this.routeHandler} />
                 </div>
+                )
+            }
             </div>
+
         )
     }
 }
