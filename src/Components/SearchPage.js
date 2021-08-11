@@ -5,7 +5,7 @@ class SearchPage extends Component {
     constructor(props){
           super(props)
           this.state = {
-            books: {}
+            books: this.props.booksData
           }
           this.getBooks = this.getBooks.bind(this)
     }
@@ -16,6 +16,7 @@ class SearchPage extends Component {
 
     render(){
       return(
+        <div>
           <div className="search-books">
           <div className="search-books-bar">
             <button className="close-search" onClick={() => {this.props.routeHandler()}}>Close</button>
@@ -38,7 +39,9 @@ class SearchPage extends Component {
 
             </div>
           </div>
-          <SearchPageResults/>
+          
+        </div>
+        <SearchPageResults/>
         </div>
       )
     }

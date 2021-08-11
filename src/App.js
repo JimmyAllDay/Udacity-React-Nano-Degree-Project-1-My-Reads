@@ -19,7 +19,6 @@ class BooksApp extends React.Component {
             <Header/>
             <BookShelfContainer/>
           </div>
-        )
       </div>
     )
   }

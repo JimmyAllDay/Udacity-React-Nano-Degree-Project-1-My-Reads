@@ -8,7 +8,7 @@ class Book extends Component {
 
 
     render() {
-        const {image, title, author} = this.props
+        const {image, title, authors} = this.props
         return ( 
                 <li>
                     <div className="book">
@@ -26,7 +26,7 @@ class Book extends Component {
                                 />
                         </div>
                         <div className="book-title">{title}</div>
-                        <div className="book-authors">{author}</div>
+                        <div className="book-authors">{authors}</div>
                     </div>
                 </li>
             )
