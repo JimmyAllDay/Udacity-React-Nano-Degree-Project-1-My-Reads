@@ -1,10 +1,25 @@
 import React from 'react'
+import Book from './Book'
 
-const SearchPageResults = () => {
+const SearchPageResults = (props) => {
+  console.log(props)
+  const searchResults = props.books.map(book => {
+    return (<Book 
+        key={book.id}
+        id={book.id} 
+        image={book.imageLinks ? book.imageLinks.smallThumbnail : null}
+        title={book.title}
+        // TODO:handle multiple authors
+        authors={book.authors}
+        shelf={book.shelf}
+        // bookShelfHandler={this.bookShelfHandler}
+        />)
+})
+
 
     return (
         <div className="search-books-results">
-        <ol className="books-grid"></ol>
+        <ol className="books-grid">{Array.isArray(props.books) && searchResults}</ol>
       </div>
     )
 

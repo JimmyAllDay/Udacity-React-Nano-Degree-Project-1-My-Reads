@@ -69,7 +69,7 @@ class BookShelfContainer extends Component  {
                     bookShelfHandler={this.bookShelfHandler}
                     />)
             })
-                console.log(this.state.books)
+            
         return(
             <div className="bookshelf">
             {this.state.showSearchPage ? (
