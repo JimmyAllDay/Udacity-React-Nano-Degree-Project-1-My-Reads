@@ -12,7 +12,6 @@ const SearchPageResults = (props) => {
         // TODO:handle multiple authors
         authors={book.authors}
         shelf={book.shelf}
-        // bookShelfHandler={this.bookShelfHandler}
         />)
 })
 

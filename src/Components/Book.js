@@ -7,7 +7,11 @@ class Book extends Component {
     }
 
 
+
+
+
     render() {
+        console.log(this.props)
         const {image, title, authors} = this.props
         return ( 
                 <li>
