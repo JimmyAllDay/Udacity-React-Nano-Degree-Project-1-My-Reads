@@ -1,10 +1,13 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-const SearchButton = (props) => {
+const SearchButton = () => {
 
     return (
         <div className="open-search">
-            <button onClick={() => {props.routeHandler()}}>Add a book</button>
+            <Link to="/search">
+                <button>Add a book</button>
+            </Link>
         </div>
     )
 }

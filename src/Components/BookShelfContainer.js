@@ -3,6 +3,7 @@ import BookShelf from './BookShelf'
 import Book from './Book'
 import SearchPage from './SearchPage'
 import SearchButton from './SearchButton'
+import { Route } from 'react-router-dom'
 
 
 class BookShelfContainer extends Component  {
@@ -10,8 +11,6 @@ class BookShelfContainer extends Component  {
             super()
             this.state = {
                 books: [],
-                //  TODO: add React Router
-                showSearchPage: false,
                 search: '',
                 foundBooks: [],
                 splicedBooks:[]
@@ -23,10 +22,9 @@ class BookShelfContainer extends Component  {
                     Authorization: this.authHeader
                 }
             }
+            this.getBooks = this.getBooks.bind(this)
             this.bookShelfHandler = this.bookShelfHandler.bind(this)
             this.bookListHandler = this.bookListHandler.bind(this)
-            this.routeHandler = this.routeHandler.bind(this)
-            this.getBooks = this.getBooks.bind(this)
             this.validateSearch = this.validateSearch.bind(this)
         }
 
@@ -38,13 +36,6 @@ class BookShelfContainer extends Component  {
                     books: result.books
                 }))
             })
-        }
-
-        // interim router solution
-        routeHandler(){
-            this.setState((prevState) => ({
-            showSearchPage: !prevState.showSearchPage
-            }))
         }
 
         // Client side validation - not yet implemented
@@ -72,7 +63,8 @@ class BookShelfContainer extends Component  {
                 fetch(`${this.initURL}/search`, options)
                 .then(res => res.json())
                 .then(result => {
-                if (result.error) {
+                if (result.error)  {
+                    console.log(result)
                     this.setState(() => ({
                         foundBooks: []
                         })
@@ -100,7 +92,6 @@ class BookShelfContainer extends Component  {
             }
 
         bookListHandler = (event, id) => {
-            // console.log(this.state.foundBooks)
             let bookIndex = null
             this.state.foundBooks.forEach(book => {
                 if (book.id === id){
@@ -108,7 +99,8 @@ class BookShelfContainer extends Component  {
                 }
             })
             this.setState(prevState => ({
-                splicedBooks: prevState.foundBooks.splice(bookIndex, 1),
+                splicedBooks: prevState.foundBooks.splice(bookIndex, 1)
+                // TODO: the below is causing an error due to an unresolved synthetic event - may require refactoring
                 // books: prevState.books.push(prevState.splicedBooks)
                 }))
             }
@@ -127,7 +119,6 @@ class BookShelfContainer extends Component  {
         }
 
         render(){
-        // console.log(this.state.splicedBooks)
             const booksMap = this.state.books.map(book => {
                 return (<Book 
                     key={book.id}
@@ -143,31 +134,38 @@ class BookShelfContainer extends Component  {
             
         return(
             <div className="bookshelf">
-            {this.state.showSearchPage ? (
-                <SearchPage
+
+                <Route exact path='/' render={()=>(
+
+                <div className="list-books-content">
+                <div>
+                    <BookShelf 
+                        Books={booksMap} 
+                        Title={'Want to Read'}/>
+                    <BookShelf 
+                        Books={booksMap} 
+                        Title={'Currently Reading'}/>
+                    <BookShelf 
+                        Books={booksMap} 
+                        Title={'Read'}/>
+                </div>
+                    <SearchButton routeHandler={this.routeHandler} />
+                </div>
+
+                )}/>
+
+                <Route path='/search' render={()=>(
+
+                    <SearchPage
                     bookShelfHandler={this.bookShelfHandler}
                     bookListHandler={this.bookListHandler} 
                     routeHandler={this.routeHandler}
                     foundBooks={this.state.foundBooks}
                     getBooks={this.getBooks}
                     />
-              ) : (
-                <div className="list-books-content">
-                    <div>
-                        <BookShelf 
-                            Books={booksMap} 
-                            Title={'Want to Read'}/>
-                        <BookShelf 
-                            Books={booksMap} 
-                            Title={'Currently Reading'}/>
-                        <BookShelf 
-                            Books={booksMap} 
-                            Title={'Read'}/>
-                    </div>
-                <SearchButton routeHandler={this.routeHandler} />
-                </div>
-                )
-            }
+
+                )}/>
+
             </div>
 
         )

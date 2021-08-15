@@ -6,12 +6,8 @@ class Book extends Component {
                 super()
     }
 
-
-
-
-
     render() {
-
+        
         const {image, title, authors} = this.props
         return ( 
                 <li>

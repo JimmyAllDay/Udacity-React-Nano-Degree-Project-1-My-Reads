@@ -16,7 +16,7 @@ const BookShelfChanger = (props) => {
                     console.error('Error:', error)
                 })
         }
-        console.log(props.shelf)
+        
         return (
 
             <div className="book-shelf-changer">

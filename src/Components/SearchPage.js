@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import SearchPageResults from './SearchPageResults'
 
 const SearchPage = (props) => {
@@ -7,7 +8,9 @@ const SearchPage = (props) => {
         <div>
           <div className="search-books">
           <div className="search-books-bar">
-            <button className="close-search" onClick={() => {props.routeHandler()}}>Close</button>
+            <Link to='/'>
+              <button className="close-search">Close</button>
+            </Link>
             <div className="search-books-input-wrapper">
               <input 
                 type="text" 
