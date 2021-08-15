@@ -5,7 +5,7 @@ const BookShelf = (props) => {
     const filteredBooks = props.Books.filter(book => {
         return book.props.shelf.toLowerCase() === shelf
     })
-    // console.log(props)
+
 
     return(
         <div className="bookshelf">

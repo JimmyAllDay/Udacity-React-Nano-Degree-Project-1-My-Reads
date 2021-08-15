@@ -11,7 +11,7 @@ class Book extends Component {
 
 
     render() {
-        console.log(this.props)
+
         const {image, title, authors} = this.props
         return ( 
                 <li>
@@ -25,8 +25,10 @@ class Book extends Component {
                                 }}
                                 ></div>
                             <BookShelfChanger
+                                shelf={this.props.shelf}
                                 id={this.props.id} 
                                 bookShelfHandler={this.props.bookShelfHandler}
+                                bookListHandler={this.props.bookListHandler}
                                 />
                         </div>
                         <div className="book-title">{title}</div>
