@@ -51,6 +51,21 @@ class BookShelfContainer extends Component  {
         //  Searchpage API Call
             // TODO: refactor
         getBooks = (searchTerm) => {
+
+            const emptySearch =() =>{
+                this.setState(() => ({
+                    foundBooks: []
+                    })
+                )
+            }
+
+            const returnSearch = (result) => {
+                this.setState(() => ({
+                    foundBooks: result
+                    })
+                )
+            }
+
             const options = {
                     method: 'POST',
                     headers: {
@@ -59,37 +74,19 @@ class BookShelfContainer extends Component  {
                     },
                     body: JSON.stringify({query: searchTerm, maxResults: 20 })
                 }
+
             searchTerm !== '' && (      
                 fetch(`${this.initURL}/search`, options)
                 .then(res => res.json())
                 .then(result => {
-                if (result.error)  {
-                    console.log(result)
-                    this.setState(() => ({
-                        foundBooks: []
-                        })
-                    )
-                } else if (Array.isArray(result.books)) {
-                    if (result.books === []) {
-                        this.setState(() => ({
-                            foundBooks: []
-                        })
-                    )} else {
-                        this.setState(() => ({
-                            foundBooks: result.books
-                            })
-                        )
+                        result.error || result.books.error || result.books === [] ?
+                        emptySearch() :
+                        returnSearch(result.books)
                     }
-                } else if (result.books.error){  
-                        this.setState(() => ({
-                            foundBooks: []
-                            })
-                        )
-                    }
-                })
+                )
                 .catch(console.log('no search results'))
-                    )
-            }
+            )
+        }
 
         bookListHandler = (event, id) => {
             let bookIndex = null
@@ -119,6 +116,7 @@ class BookShelfContainer extends Component  {
         }
 
         render(){
+
             const booksMap = this.state.books.map(book => {
                 return (<Book 
                     key={book.id}
@@ -149,7 +147,7 @@ class BookShelfContainer extends Component  {
                         Books={booksMap} 
                         Title={'Read'}/>
                 </div>
-                    <SearchButton routeHandler={this.routeHandler} />
+                    <SearchButton/>
                 </div>
 
                 )}/>
