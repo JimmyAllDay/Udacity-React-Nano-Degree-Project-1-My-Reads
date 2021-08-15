@@ -2,7 +2,7 @@ import React from 'react'
 
 const BookShelfChanger = (props) => {
 
-        const bookShelfAPIUpdater = (id, shelf ) => {
+        const bookShelfAPIUpdater = (shelf, id) => {
             const options = {
                     method: 'PUT',
                     headers: {
@@ -16,14 +16,14 @@ const BookShelfChanger = (props) => {
                     console.error('Error:', error)
                 })
         }
-        
+
         return (
 
             <div className="book-shelf-changer">
                 <select value={props.shelf} onChange={(event) => {
+                            props.bookListHandler(props.id)
                             props.bookShelfHandler(event.target.value, props.id)
-                            props.bookListHandler(event.target.value, props.id)
-                            bookShelfAPIUpdater(props.id, event.target.value)
+                            bookShelfAPIUpdater(event.target.value, props.id)
                         }
                     }>
                     <option value="move" disabled>Move to...</option>

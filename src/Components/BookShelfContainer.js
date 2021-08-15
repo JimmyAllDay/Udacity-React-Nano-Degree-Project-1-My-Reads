@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, {Component } from 'react'
 import BookShelf from './BookShelf'
 import Book from './Book'
 import SearchPage from './SearchPage'
@@ -12,8 +12,7 @@ class BookShelfContainer extends Component  {
             this.state = {
                 books: [],
                 search: '',
-                foundBooks: [],
-                splicedBooks:[]
+                foundBooks: []
             }
             this.initURL = 'https://reactnd-books-api.udacity.com'
             this.authHeader = 'JimmyAllDayWantsBooksData'
@@ -22,6 +21,7 @@ class BookShelfContainer extends Component  {
                     Authorization: this.authHeader
                 }
             }
+
             this.getBooks = this.getBooks.bind(this)
             this.bookShelfHandler = this.bookShelfHandler.bind(this)
             this.bookListHandler = this.bookListHandler.bind(this)
@@ -47,6 +47,9 @@ class BookShelfContainer extends Component  {
             }))
             )
         }
+
+
+
 
         //  Searchpage API Call
             // TODO: refactor
@@ -87,19 +90,17 @@ class BookShelfContainer extends Component  {
                 .catch(console.log('no search results'))
             )
         }
-
-        bookListHandler = (event, id) => {
+        
+        bookListHandler = (id) => {
             let bookIndex = null
             this.state.foundBooks.forEach(book => {
                 if (book.id === id){
                     bookIndex = this.state.foundBooks.indexOf(book)
                 }
             })
-            this.setState(prevState => ({
-                splicedBooks: prevState.foundBooks.splice(bookIndex, 1)
-                // TODO: the below is causing an error due to an unresolved synthetic event - may require refactoring
-                // books: prevState.books.push(prevState.splicedBooks)
-                }))
+            const addBook = this.state.foundBooks.splice(bookIndex, 1)
+            const books = this.state.books.concat(addBook)
+            this.setState({books})
             }
 
         // For reference - the below solution was derived from https://knowledge.udacity.com/questions/216569
@@ -117,52 +118,57 @@ class BookShelfContainer extends Component  {
 
         render(){
 
-            const booksMap = this.state.books.map(book => {
-                return (<Book 
-                    key={book.id}
-                    id={book.id} 
-                    image={book.imageLinks.smallThumbnail}
-                    title={book.title}
-                    authors={book.authors}
-                    shelf={book.shelf}
-                    bookShelfHandler={this.bookShelfHandler}
-                    bookListHandler={this.bookListHandler}
-                    />)
-            })
+            const booksMap = (stateArray) => {   
+                const mappedBooks = stateArray.map(book => {
+                    return (<Book 
+                        key={book.id}
+                        id={book.id} 
+                        image={book.imageLinks ? book.imageLinks.smallThumbnail : null}
+                        title={book.title}
+                        authors={book.authors}
+                        shelf={book.shelf ? book.shelf : 'none'}
+                        bookShelfHandler={this.bookShelfHandler}
+                        bookListHandler={this.bookListHandler}
+                        />)
+                })
+                return mappedBooks
+            }
+
+            const shelves = [
+                'Want to Read', 'Currently Reading', 'Read'
+            ]
+
+            const shelvesMap = (booksArray, shelfArray) => {
+                const shelfMap = shelfArray.map((shelf)=>{
+                    return <BookShelf
+                                key={shelf}
+                                booksMap={booksArray}
+                                title={shelf}
+                    />
+                })
+                return shelfMap
+            }
             
         return(
             <div className="bookshelf">
 
                 <Route exact path='/' render={()=>(
-
-                <div className="list-books-content">
-                <div>
-                    <BookShelf 
-                        Books={booksMap} 
-                        Title={'Want to Read'}/>
-                    <BookShelf 
-                        Books={booksMap} 
-                        Title={'Currently Reading'}/>
-                    <BookShelf 
-                        Books={booksMap} 
-                        Title={'Read'}/>
-                </div>
-                    <SearchButton/>
-                </div>
-
-                )}/>
+                    <div className="list-books-content">
+                            {shelvesMap(booksMap(this.state.books), shelves)}
+                        <SearchButton/>
+                        </div>
+                    )
+                }/>
 
                 <Route path='/search' render={()=>(
-
-                    <SearchPage
-                    bookShelfHandler={this.bookShelfHandler}
-                    bookListHandler={this.bookListHandler} 
-                    routeHandler={this.routeHandler}
-                    foundBooks={this.state.foundBooks}
-                    getBooks={this.getBooks}
-                    />
-
-                )}/>
+                        <SearchPage
+                            bookShelfHandler={this.bookShelfHandler}
+                            bookListHandler={this.bookListHandler}
+                            foundBooks={booksMap(this.state.foundBooks)}
+                            getBooks={this.getBooks}
+                        />
+                    )
+                }/>
 
             </div>
 
