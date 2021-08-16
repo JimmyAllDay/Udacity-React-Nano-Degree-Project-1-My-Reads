@@ -1,10 +1,11 @@
 import React from 'react'
+// import Book from './Book'
 
-const SearchPageResults = () => {
+const SearchPageResults = (props) => {
 
     return (
         <div className="search-books-results">
-        <ol className="books-grid"></ol>
+        <ol className="books-grid">{props.foundBooks}</ol>
       </div>
     )
 
