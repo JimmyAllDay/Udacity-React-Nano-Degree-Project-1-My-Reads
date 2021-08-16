@@ -48,23 +48,30 @@ class BookShelfContainer extends Component  {
             )
         }
 
-
-
-
         //  Searchpage API Call
             // TODO: refactor
         getBooks = (searchTerm) => {
 
+            const noBooks = this.state.foundBooks.splice(0, this.state.foundBooks.length)
             const emptySearch =() =>{
-                this.setState(() => ({
-                    foundBooks: []
-                    })
-                )
+                this.setState({noBooks})
             }
 
             const returnSearch = (result) => {
+
+                // Reference: the below solution was derived from: https://www.tutorialspoint.com/filter-an-array-containing-objects-based-on-another-array-containing-objects-in-javascript
+                const filterRes = (arr1, arr2) =>{
+                let resArray = []
+                resArray = arr1.filter(el=>{
+                    return !arr2.find(element =>{
+                        return element.id === el.id
+                        })
+                    })
+                return resArray
+                }
+
                 this.setState(() => ({
-                    foundBooks: result
+                    foundBooks: filterRes(result, this.state.books)
                     })
                 )
             }
@@ -87,9 +94,14 @@ class BookShelfContainer extends Component  {
                         returnSearch(result.books)
                     }
                 )
-                .catch(console.log('no search results'))
+                .catch(null)
             )
+
+            searchTerm === '' && (
+                emptySearch()
+            )            
         }
+
         
         bookListHandler = (id) => {
             let bookIndex = null
@@ -103,7 +115,7 @@ class BookShelfContainer extends Component  {
             this.setState({books})
             }
 
-        // For reference - the below solution was derived from https://knowledge.udacity.com/questions/216569
+        // Reference - the below solution was derived from https://knowledge.udacity.com/questions/216569
         bookShelfHandler(event, id){
                 this.setState(prevState => ({
                     books: prevState.books.map(book => {
