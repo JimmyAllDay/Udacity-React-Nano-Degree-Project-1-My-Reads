@@ -121,7 +121,6 @@ class BookShelfContainer extends Component  {
 
             //Check for duplicate books being pushed from search page
             const checkBooks = (arr, book) => {
-                    console.log(book)
 
                     const returnArr = []
                     if (book.length > 0 ){
@@ -161,7 +160,7 @@ class BookShelfContainer extends Component  {
         }
 
         render(){
-            console.log(this.state.books)
+
             const booksMap = (stateArray) => {   
                 const mappedBooks = stateArray.map(book => {
                     return (<Book 
