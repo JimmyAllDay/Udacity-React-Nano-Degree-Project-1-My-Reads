@@ -121,10 +121,9 @@ class BookShelfContainer extends Component  {
 
             //Check for duplicate books being pushed from search page
             const checkBooks = (arr, book) => {
-
+                
                     const returnArr = []
                     if (book.length > 0 ){
-                        console.log('yes')
                         const id = book[0].id
                         arr.forEach((arrbook, i)=> {
                         return id === arrbook.id ?
