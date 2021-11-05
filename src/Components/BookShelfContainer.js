@@ -70,8 +70,13 @@ class BookShelfContainer extends Component  {
                 return resArray
                 }
 
+                const searchResult = filterRes(result, this.state.books)
+                const notResult = filterRes(this.state.books, result)
+                const concatResult = searchResult.concat(this.state.books)
+                const finalSearchResult = filterRes(concatResult, notResult)
+
                 this.setState(() => ({
-                    foundBooks: filterRes(result, this.state.books)
+                    foundBooks: finalSearchResult
                     })
                 )
             }
@@ -102,16 +107,41 @@ class BookShelfContainer extends Component  {
             )            
         }
 
-        
+
         bookListHandler = (id) => {
+
             let bookIndex = null
             this.state.foundBooks.forEach(book => {
                 if (book.id === id){
                     bookIndex = this.state.foundBooks.indexOf(book)
                 }
             })
+
             const addBook = this.state.foundBooks.splice(bookIndex, 1)
-            const books = this.state.books.concat(addBook)
+
+            //Check for duplicate books being pushed from search page
+            const checkBooks = (arr, book) => {
+                
+                    const returnArr = []
+                    if (book.length > 0 ){
+                        const id = book[0].id
+                        arr.forEach((arrbook, i)=> {
+                        return id === arrbook.id ?
+                        arr.splice(i,-1) : 
+                        returnArr.push(arrbook)
+                    }) 
+                } else {
+                    arr.forEach((book)=>{
+                        returnArr.push(book)
+                    })     
+                }
+
+                return returnArr.concat(book)
+            }
+
+            const books = checkBooks(this.state.books, addBook)
+
+
             this.setState({books})
             }
 
