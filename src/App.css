@@ -19,12 +19,17 @@ body,
   background: white;
 }
 
+input::-webkit-calendar-picker-indicator {
+  opacity: 0;
+}
+
 /* main page */
 
 .list-books-title {
   padding: 10px 0;
   background: #8ecdb7;
   text-align: left;
+  border-bottom: 1px solid #478385;
 }
 
 .list-books-title h1 {

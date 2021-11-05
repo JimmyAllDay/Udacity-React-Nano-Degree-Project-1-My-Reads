@@ -1,8 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import SearchPageResults from "./SearchPageResults";
+import searchTerms from "./searchTerms";
 
-const SearchPage = (props) => {
+function SearchPage(props) {
+  const datalist = (e) => {};
   return (
     <div>
       <div className="search-books">
@@ -14,10 +16,16 @@ const SearchPage = (props) => {
             <input
               type="search"
               placeholder="Search by title or author"
+              list="search-terms"
               onChange={(event) => {
                 props.getBooks(event.target.value);
               }}
             />
+            <datalist id="search-terms">
+              {searchTerms.map((item, key) => (
+                <option key={key}>{item}</option>
+              ))}
+            </datalist>
           </div>
         </div>
       </div>
@@ -28,7 +36,7 @@ const SearchPage = (props) => {
       />
     </div>
   );
-};
+}
 
 export default SearchPage;
 
