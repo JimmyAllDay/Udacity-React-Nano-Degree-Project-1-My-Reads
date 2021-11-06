@@ -86,6 +86,7 @@ input::-webkit-calendar-picker-indicator {
   background: white;
   border: 1px solid #686868;
   border-radius: 4px;
+  z-index: 6;
 }
 
 .tool-tip span {
