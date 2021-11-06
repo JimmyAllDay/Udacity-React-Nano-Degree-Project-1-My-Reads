@@ -1,15 +1,15 @@
 {
-  "main.css": "/book-sprout/static/css/main.dce17c57.chunk.css",
-  "main.js": "/book-sprout/static/js/main.6b09e136.chunk.js",
-  "main.js.map": "/book-sprout/static/js/main.6b09e136.chunk.js.map",
+  "main.css": "/book-sprout/static/css/main.47686d26.chunk.css",
+  "main.js": "/book-sprout/static/js/main.1340c1d6.chunk.js",
+  "main.js.map": "/book-sprout/static/js/main.1340c1d6.chunk.js.map",
   "static/js/1.904da5f1.chunk.js": "/book-sprout/static/js/1.904da5f1.chunk.js",
   "static/js/1.904da5f1.chunk.js.map": "/book-sprout/static/js/1.904da5f1.chunk.js.map",
   "runtime~main.js": "/book-sprout/static/js/runtime~main.5793b9af.js",
   "runtime~main.js.map": "/book-sprout/static/js/runtime~main.5793b9af.js.map",
   "static/media/sprout-logo.svg": "/book-sprout/static/media/sprout-logo.512d9f3b.svg",
   "static/media/App.css": "/book-sprout/static/media/arrow-back.3687aa98.svg",
-  "static/css/main.dce17c57.chunk.css.map": "/book-sprout/static/css/main.dce17c57.chunk.css.map",
+  "static/css/main.47686d26.chunk.css.map": "/book-sprout/static/css/main.47686d26.chunk.css.map",
   "index.html": "/book-sprout/index.html",
-  "precache-manifest.ba638a70a79646043a7a107bc7509bc1.js": "/book-sprout/precache-manifest.ba638a70a79646043a7a107bc7509bc1.js",
+  "precache-manifest.f4332e2aee7e60c8747ac6dba331a571.js": "/book-sprout/precache-manifest.f4332e2aee7e60c8747ac6dba331a571.js",
   "service-worker.js": "/book-sprout/service-worker.js"
 }
