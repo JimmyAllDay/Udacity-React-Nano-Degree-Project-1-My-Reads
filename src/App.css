@@ -29,7 +29,7 @@ input::-webkit-calendar-picker-indicator {
   padding: 10px 0;
   background: #8ecdb7;
   text-align: left;
-  border-bottom: 1px solid #478385;
+  border-bottom: 1px solid #686868;
 }
 
 .list-books-title h1 {
@@ -45,7 +45,7 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .nav-title {
-  margin: 0 0 0 40px;
+  margin: 0 0 0 3em;
   display: flex;
   flex-direction: column;
 }
@@ -62,6 +62,35 @@ input::-webkit-calendar-picker-indicator {
   margin-left: 0.9em;
   height: 2.3em;
   width: 2.3em;
+}
+
+.question-icon-container {
+  margin-left: auto;
+  margin-right: 2em;
+  padding: 1em;
+}
+
+.question-icon {
+  font-size: 2em;
+  color: white;
+}
+
+.tool-tip {
+  height: auto;
+  width: 16em;
+  top: 100px;
+  right: 40px;
+  padding: 1em;
+  position: absolute;
+  color: black;
+  background: white;
+  border: 1px solid #686868;
+  border-radius: 4px;
+}
+
+.tool-tip span {
+  font-family: "Fredoka One", cursive;
+  color: #8ecdb7;
 }
 
 .list-books-content {

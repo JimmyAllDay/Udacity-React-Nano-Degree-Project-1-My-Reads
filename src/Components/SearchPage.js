@@ -15,7 +15,7 @@ function SearchPage(props) {
           <div className="search-books-input-wrapper">
             <input
               type="search"
-              placeholder="Search by title or author"
+              placeholder="Enter search term"
               list="search-terms"
               onChange={(event) => {
                 props.getBooks(event.target.value);
