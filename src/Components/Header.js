@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import sproutLogo from "../icons/sprout-logo.svg";
 import { BsQuestionCircle } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 // Reference: Logo sourced from https://www.emojipng.com/preview/12429992
 class Header extends Component {
@@ -23,9 +24,12 @@ class Header extends Component {
       <div className="list-books-title">
         <div className="nav-container">
           <div className="nav-title">
-            <h1>Book Sprout</h1>
+            <Link to="/">
+              <h1>Book Sprout</h1>
+            </Link>
             <p className="nav-subtitle">Grow your knowledge</p>
           </div>
+
           <div className="sprout-logo">
             <img src={sproutLogo} alt="sprout logo" />
           </div>
@@ -36,10 +40,12 @@ class Header extends Component {
               className="question-icon"
             />
             {this.state.shown && (
-              <div className="tool-tip">
-                <span>Book Sprout</span> is a branded component grown on the
-                Udacity MyReads API. To nourish your reading list, use the
-                search page for a list of searchable terms.
+              <div className="tool-tip tool-tip-anim">
+                <span>Book Sprout</span> is a branded component built with the
+                Udacity MyReads API. To grow your reading list, use a searchable
+                term on the searchpage, find your book, and click the book shelf
+                changer button to add it to a category. Thanks to the API, state
+                persists across uses.
               </div>
             )}
           </div>

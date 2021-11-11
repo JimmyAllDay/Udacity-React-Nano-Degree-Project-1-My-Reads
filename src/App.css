@@ -39,6 +39,11 @@ input::-webkit-calendar-picker-indicator {
   letter-spacing: 0.07em;
   color: white;
 }
+a:-webkit-any-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .nav-container {
   display: flex;
   flex-direction: row;
@@ -65,9 +70,9 @@ input::-webkit-calendar-picker-indicator {
 }
 
 .question-icon-container {
-  margin-left: auto;
-  margin-right: 2em;
-  padding: 1em;
+  position: absolute;
+  right: 25px;
+  top: 25px;
 }
 
 .question-icon {
@@ -78,15 +83,15 @@ input::-webkit-calendar-picker-indicator {
 .tool-tip {
   height: auto;
   width: 16em;
-  top: 100px;
-  right: 40px;
+  top: 25px;
+  right: 30px;
   padding: 1em;
   position: absolute;
   color: black;
   background: white;
   border: 1px solid #686868;
   border-radius: 4px;
-  z-index: 6;
+  z-index: 10;
 }
 
 .tool-tip span {
@@ -124,7 +129,8 @@ input::-webkit-calendar-picker-indicator {
   bottom: 25px;
 }
 
-.open-search button {
+.search-button {
+  color: white;
   display: block;
   width: 50px;
   height: 50px;
@@ -134,15 +140,11 @@ input::-webkit-calendar-picker-indicator {
   background-repeat: no-repeat;
   background-position: center;
   background-size: 28px;
-  box-shadow: none;
-  -webkit-box-shadow: none;
-  -moz-box-shadow: none;
-  box-shadow: none;
   font-size: 0;
   outline: 0;
 }
 
-.open-search button:hover {
+.search-button:hover {
   background-color: #395993;
 }
 
@@ -194,6 +196,24 @@ button:active {
 .search-books-results {
   padding: 80px 10px 20px;
 }
+/* Search page datalist */
+
+.search-datalist {
+  position: absolute;
+  z-index: 6;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.938);
+  padding: 20px;
+  margin-top: 5px;
+  margin-right: 20px;
+}
+.datalist-term {
+  display: inline-block;
+  margin: 3px;
+}
+.datalist-term:hover {
+  color: cornflowerblue;
+}
 
 /* books grid */
 
@@ -243,7 +263,7 @@ button:active {
   height: 40px;
   border-radius: 50%;
   background: #456ab0;
-  background-image: url("./icons/arrow-drop-down.svg");
+  background-image: url("./icons/leaf-4899.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
