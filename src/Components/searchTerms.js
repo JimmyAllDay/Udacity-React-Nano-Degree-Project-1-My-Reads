@@ -1,6 +1,5 @@
 const searchTerms = [
   "Android",
-  "Art",
   "Artificial Intelligence",
   "Astronomy",
   "Austen",

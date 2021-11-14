@@ -30,7 +30,7 @@ class SearchPage extends Component {
 
   // filter datalist terms passed as props to datalist component
   filterTerms = (e, termsArray) => {
-    const userInput = e.target.value.toLowerCase();
+    const userInput = e.target.value.trim().toLowerCase();
     const filteredTerms = termsArray.filter((term) => {
       return term.toLowerCase().includes(userInput);
     });
@@ -143,16 +143,12 @@ class DataList extends Component {
     document.removeEventListener("mousedown", this.handleClickOutside);
   }
 
-  /**
-   * Set the wrapper ref
-   */
+  //Seet wrapper ref
   setWrapperRef(node) {
     this.wrapperRef = node;
   }
 
-  /**
-   * Alert if clicked on outside of element
-   */
+  //Close search on c lick outside
   handleClickOutside(event) {
     if (this.wrapperRef && !this.wrapperRef.current.contains(event.target)) {
       this.props.hideDivHandler();
@@ -166,7 +162,11 @@ class DataList extends Component {
         className="search-datalist"
         style={{ border: "black solid 1px" }}
       >
-        {this.renderList()}
+        {this.props.searchTerms.length > 0 ? (
+          this.renderList()
+        ) : (
+          <p>No search terms with that search string. Try another.</p>
+        )}
       </div>
     );
   }

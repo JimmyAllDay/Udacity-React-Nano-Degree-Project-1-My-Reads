@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "77ece4eb670649f00920",
-    "url": "/book-sprout/static/css/main.47686d26.chunk.css"
+    "revision": "f4f46043371d939ae48b",
+    "url": "/book-sprout/static/css/main.fd4f31de.chunk.css"
   },
   {
-    "revision": "77ece4eb670649f00920",
-    "url": "/book-sprout/static/js/main.77ece4eb.chunk.js"
+    "revision": "f4f46043371d939ae48b",
+    "url": "/book-sprout/static/js/main.f4f46043.chunk.js"
   },
   {
     "revision": "7e59cef689532828d7c2",
@@ -20,19 +20,19 @@ self.__precacheManifest = [
     "url": "/book-sprout/static/media/sprout-logo.512d9f3b.svg"
   },
   {
-    "revision": "bb9363b86b02777d23523851826414e0",
-    "url": "/book-sprout/static/media/add.bb9363b8.svg"
+    "revision": "d0b0f330b18acbca93bb8a04dbac9366",
+    "url": "/book-sprout/static/media/leaf-4899.d0b0f330.svg"
   },
   {
     "revision": "3687aa988bec28f17ae39153db1646c3",
     "url": "/book-sprout/static/media/arrow-back.3687aa98.svg"
   },
   {
-    "revision": "78c6f53b2342643639fe1cbaf171bf47",
-    "url": "/book-sprout/static/media/arrow-drop-down.78c6f53b.svg"
+    "revision": "bb9363b86b02777d23523851826414e0",
+    "url": "/book-sprout/static/media/add.bb9363b8.svg"
   },
   {
-    "revision": "c97eaf7fc30e8e9417faf2fd0ffe8b90",
+    "revision": "357ae92653d5fbce0f41db3a04361664",
     "url": "/book-sprout/index.html"
   }
 ];
