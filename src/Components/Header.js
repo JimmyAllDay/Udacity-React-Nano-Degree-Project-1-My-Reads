@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import sproutLogo from "../icons/sprout-logo.svg";
+import bookLogo from "../icons/book-61.svg";
 import { BsQuestionCircle } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
@@ -25,13 +25,12 @@ class Header extends Component {
         <div className="nav-container">
           <div className="nav-title">
             <Link to="/">
-              <h1>Book Sprout</h1>
+              <h1>Book Shelf</h1>
             </Link>
-            <p className="nav-subtitle">Grow your knowledge</p>
           </div>
 
-          <div className="sprout-logo">
-            <img src={sproutLogo} alt="sprout logo" />
+          <div className="book-logo">
+            <img src={bookLogo} alt="Book shelf logo" />
           </div>
           <div className="question-icon-container">
             <BsQuestionCircle
@@ -41,7 +40,7 @@ class Header extends Component {
             />
             {this.state.shown && (
               <div className="tool-tip tool-tip-anim">
-                <span>Book Sprout</span> is a branded component built with the
+                <span>Book Shelf</span> is a branded component built with the
                 Udacity MyReads API. To grow your reading list, use a searchable
                 term on the searchpage, find your book, and click the book shelf
                 changer button to add it to a category. Thanks to the API, state

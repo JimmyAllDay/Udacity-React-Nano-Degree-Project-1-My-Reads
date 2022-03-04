@@ -50,7 +50,7 @@ a:-webkit-any-link {
 }
 
 .nav-title {
-  margin: 0 0 0 3em;
+  margin: 0.2em 0 0 3em;
   display: flex;
   flex-direction: column;
 }
@@ -59,25 +59,15 @@ a:-webkit-any-link {
   text-decoration: none;
 }
 
-.nav-subtitle {
-  font-size: 0.9em;
-  margin-bottom: 0;
-  margin-top: -10px;
-  justify-content: center;
-  color: white;
-}
-
-.sprout-logo {
-  margin-top: 0.2em;
-  margin-left: 0.9em;
-  height: 2.3em;
-  width: 2.3em;
+.book-logo {
+  height: 3.5em;
+  width: 3.5em;
 }
 
 .question-icon-container {
   position: absolute;
   right: 25px;
-  top: 25px;
+  top: 20px;
 }
 
 .question-icon {
@@ -222,7 +212,7 @@ button:active {
   margin: 3px;
 }
 .datalist-term:hover {
-  color: cornflowerblue;
+  color: #6495ed;
 }
 
 /* books grid */
@@ -273,7 +263,7 @@ button:active {
   height: 40px;
   border-radius: 50%;
   background: #8ecdb7;
-  background-image: url("./icons/leaf-4899.svg");
+  background-image: url("./icons/books-36.svg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: 20px;
@@ -313,12 +303,12 @@ button:active {
     font-size: 0.7em;
   }
 
-  .sprout-logo {
+  /* .sprout-logo {
     height: 1.8em;
     width: 1.8em;
     margin-top: 0.3em;
     margin-left: 0.3em;
-  }
+  } */
   .question-icon-container {
     position: absolute;
     right: 13px;
